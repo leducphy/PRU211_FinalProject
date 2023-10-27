@@ -570,7 +570,7 @@ Transform:
   m_GameObject: {fileID: 443497686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 6.6, y: -2.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -722,6 +722,7 @@ GameObject:
   - component: {fileID: 695564349}
   - component: {fileID: 695564348}
   - component: {fileID: 695564350}
+  - component: {fileID: 695564351}
   m_Layer: 0
   m_Name: Ground1
   m_TagString: Untagged
@@ -750,7 +751,7 @@ Transform:
   m_GameObject: {fileID: 695564347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -784,6 +785,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &695564351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695564347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130f6555ab48fca4993e24494cf32701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2035298841}
+  currentDistance: 0
+  limitDistance: 40
+  respawnDistance: 60
 --- !u!1 &885540482
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +816,7 @@ GameObject:
   - component: {fileID: 885540486}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,7 +830,7 @@ Transform:
   m_GameObject: {fileID: 885540482}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.9, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4259,7 +4276,7 @@ GameObject:
   - component: {fileID: 936855752}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4273,7 +4290,7 @@ Transform:
   m_GameObject: {fileID: 936855748}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1, y: -1.6, z: 0}
+  m_LocalPosition: {x: -1.9, y: -11.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7715,6 +7732,7 @@ GameObject:
   - component: {fileID: 1036648711}
   - component: {fileID: 1036648710}
   - component: {fileID: 1036648709}
+  - component: {fileID: 1036648712}
   m_Layer: 0
   m_Name: Ground2
   m_TagString: Untagged
@@ -7770,13 +7788,29 @@ Transform:
   m_GameObject: {fileID: 1036648708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 130.8, y: -0.3, z: 0}
+  m_LocalPosition: {x: 131.9, y: 6.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 936855749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036648712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036648708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130f6555ab48fca4993e24494cf32701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2035298841}
+  currentDistance: 0
+  limitDistance: 40
+  respawnDistance: 60
 --- !u!1 &1375491616
 GameObject:
   m_ObjectHideFlags: 0
@@ -8015,7 +8049,7 @@ Transform:
   m_GameObject: {fileID: 2035298839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.22, y: -1.15, z: 0}
+  m_LocalPosition: {x: -3.23, y: -4.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

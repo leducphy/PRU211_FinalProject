@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce;
     private bool isJumping = false;
+    String currentState = "";
+    String weapon = "";
+    enum PlayerSate
+    {
+        Run, Roll, Jump, Idle, Die, Throw, Attack1, Attack2, Attack3
+    };
 
     private void Start()
     {
@@ -24,21 +32,33 @@ public class PlayerController : MonoBehaviour
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            weapon = "";
+        }else if (Input.GetKey(KeyCode.Alpha2))
+        {
+            weapon = "Bow";
+        }else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            weapon = "Spear";
+        }else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            weapon = "Sword";
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        //Debug.Log(weapon + PlayerSate.Run.ToString());
+        if (!isJumping)
         {
-            animator.SetInteger("State", 2); // State 2: Jump
-        }
-        // Set animator state based on movement
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        {
-            animator.SetInteger("State", 1); // State 1: Move
-            // Flip the sprite when moving left
-            spriteRenderer.flipX = moveHorizontal < 0;
-        }
-        else
-        {
-            animator.SetInteger("State", 0); // State 0: Idle
+            if (moveHorizontal != 0)
+            {
+                changeAnimationState(weapon + PlayerSate.Run.ToString());
+                spriteRenderer.flipX = moveHorizontal < 0;
+                Debug.Log(weapon + PlayerSate.Run.ToString());
+            }
+            else
+            {
+                changeAnimationState(weapon + PlayerSate.Idle.ToString());
+            }
         }
 
         // Jumping
@@ -48,6 +68,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 isJumping = true;
+                changeAnimationState(weapon + PlayerSate.Jump.ToString());
             }
         }
     }
@@ -59,5 +80,17 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+
+    void changeAnimationState(String newPlayerState)
+    {
+        if (currentState.Equals(newPlayerState))
+        {
+            return;
+        }
+
+        animator.Play(newPlayerState);
+
+        currentState = newPlayerState;
     }
 }
