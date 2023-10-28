@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
@@ -52,6 +53,16 @@ public class PlayerController : MonoBehaviour
         }else if (Input.GetKey(KeyCode.Alpha4))
         {
             weapon = "Sword";
+        }
+
+        //Attack
+        if (Input.GetButtonDown("Fire1"))
+        {
+            changeAnimationState(weapon + PlayerSate.Attack1);
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            changeAnimationState(weapon + PlayerSate.Idle);
         }
 
         //Debug.Log(weapon + PlayerSate.Run.ToString());
