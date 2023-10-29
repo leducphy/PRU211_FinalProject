@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     Vector3 LeftLimitation;
     enum PlayerSate
     {
-        Run, Roll, Jump, Idle, Die, Throw, Attack1, Attack2, Attack3
+        Run, Roll, Jump, Idle, Die, Throw, Attack, Attack1, Attack2, Attack3
     };
 
     private void Start()
