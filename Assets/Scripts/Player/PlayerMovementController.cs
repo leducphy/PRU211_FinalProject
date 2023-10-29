@@ -55,24 +55,14 @@ public class PlayerController : MonoBehaviour
             weapon = "Sword";
         }
 
-        //Attack
-        if (Input.GetButtonDown("Fire1"))
-        {
-            changeAnimationState(weapon + PlayerSate.Attack1);
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            changeAnimationState(weapon + PlayerSate.Idle);
-        }
-
-        //Debug.Log(weapon + PlayerSate.Run.ToString());
+        Debug.Log("Weapon: " + weapon);
         if (!isJumping)
         {
             if (moveHorizontal != 0)
             {
                 changeAnimationState(weapon + PlayerSate.Run.ToString());
                 spriteRenderer.flipX = moveHorizontal < 0;
-                Debug.Log(weapon + PlayerSate.Run.ToString());
+                //Debug.Log(weapon + PlayerSate.Run.ToString());
             }
             else
             {
