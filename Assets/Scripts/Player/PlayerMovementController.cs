@@ -36,9 +36,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log("Tag: " + gameObject.tag);
-
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
@@ -65,18 +62,8 @@ public class PlayerMovementController : MonoBehaviour
         if (!isJumping)
         {
             if (moveHorizontal != 0)
-            {
-                if (Input.GetKey(KeyCode.LeftShift) && !isRolling)
-                {
-                    isRolling = true;
-                    gameObject.tag = "Untagged"; // Xóa tag để nhân vật không bị va chạm trong thời gian lăn
-                    changeAnimationState(weapon + PlayerSate.Roll);
-
-                    StartCoroutine(RollCoroutine());
-                }
+            {             
                 changeAnimationState(weapon + PlayerSate.Run);
-
-                //spriteRenderer.flipX = moveHorizontal < 0;
                 if (moveHorizontal > 0 && !facingRight)
                 {
                     Flip();
@@ -84,17 +71,12 @@ public class PlayerMovementController : MonoBehaviour
                 {
                     Flip();
                 }
-                //Debug.Log(weapon + PlayerSate.Run.ToString());
             }
             else
             {
                 changeAnimationState(weapon + PlayerSate.Idle);
             }
         }
-
-        Debug.Log("isJumping: " + isJumping);
-
-        // Jumping
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (!isJumping)
@@ -114,7 +96,6 @@ public class PlayerMovementController : MonoBehaviour
             Bounds colliderBounds = collision.gameObject.GetComponent<BoxCollider2D>().bounds;
             // Lấy vị trí mép bên trái của Collider
             LeftLimitation = new Vector3(colliderBounds.min.x + leftLimitationOffset, colliderBounds.center.y, colliderBounds.center.z);
-            Debug.Log("OnGround");
             isJumping = false;
         }
     }
@@ -131,22 +112,6 @@ public class PlayerMovementController : MonoBehaviour
         currentState = newPlayerState;
     }
 
-    // Coroutine để xử lý thời gian lăn và sau đó đứng dậy
-    IEnumerator RollCoroutine()
-    {
-        yield return new WaitForSeconds(rollDuration);
-
-        // Khi thời gian lăn kết thúc, thực hiện hành động dậy
-        isRolling = false;
-        gameObject.tag = "Player"; // Gán lại tag để nhân vật có thể va chạm
-        changeAnimationState(weapon + PlayerSate.Run);
-
-        yield return new WaitForSeconds(0.5f); // Khoảng thời gian đứng dậy sau khi lăn (0.5 giây trong ví dụ này)
-
-        // Thực hiện hành động đứng yên sau khi đứng dậy
-        changeAnimationState(weapon + PlayerSate.Idle);
-    }
-    
     void Flip()
     {
         facingRight = !facingRight;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerCombatController : MonoBehaviour
 {
     public GameObject coinPrefab;
-
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
