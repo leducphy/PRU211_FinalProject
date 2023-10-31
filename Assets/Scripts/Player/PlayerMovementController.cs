@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator animator;
@@ -12,13 +13,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce;
     [SerializeField] private int leftLimitationOffset;
-    private bool isJumping = false;
+    public bool isJumping = false;
     String currentState = "";
-    String weapon = "";
+    public String weapon = "";
+    private bool isRolling = false;
+    private bool facingRight = true;
+    public float rollDuration = 0.16f; // Thời gian lăn (1 giây trong ví dụ này)
+
     Vector3 LeftLimitation;
-    enum PlayerSate
+    public enum PlayerSate
     {
-        Run, Roll, Jump, Idle, Die, Throw, Attack, Attack1, Attack2, Attack3
+        Run, Roll, Jump, Idle, Die
     };
 
     private void Start()
@@ -31,7 +36,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+
+        Debug.Log("Tag: " + gameObject.tag);
+
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
@@ -55,29 +62,46 @@ public class PlayerController : MonoBehaviour
             weapon = "Sword";
         }
 
-        Debug.Log("Weapon: " + weapon);
         if (!isJumping)
         {
             if (moveHorizontal != 0)
             {
-                changeAnimationState(weapon + PlayerSate.Run.ToString());
-                spriteRenderer.flipX = moveHorizontal < 0;
+                if (Input.GetKey(KeyCode.LeftShift) && !isRolling)
+                {
+                    isRolling = true;
+                    gameObject.tag = "Untagged"; // Xóa tag để nhân vật không bị va chạm trong thời gian lăn
+                    changeAnimationState(weapon + PlayerSate.Roll);
+
+                    StartCoroutine(RollCoroutine());
+                }
+                changeAnimationState(weapon + PlayerSate.Run);
+
+                //spriteRenderer.flipX = moveHorizontal < 0;
+                if (moveHorizontal > 0 && !facingRight)
+                {
+                    Flip();
+                }else if (moveHorizontal < 0 && facingRight)
+                {
+                    Flip();
+                }
                 //Debug.Log(weapon + PlayerSate.Run.ToString());
             }
             else
             {
-                changeAnimationState(weapon + PlayerSate.Idle.ToString());
+                changeAnimationState(weapon + PlayerSate.Idle);
             }
         }
 
+        Debug.Log("isJumping: " + isJumping);
+
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             if (!isJumping)
             {
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 isJumping = true;
-                changeAnimationState(weapon + PlayerSate.Jump.ToString());
+                changeAnimationState(weapon + PlayerSate.Jump.ToString());               
             }
         }
     }
@@ -90,12 +114,12 @@ public class PlayerController : MonoBehaviour
             Bounds colliderBounds = collision.gameObject.GetComponent<BoxCollider2D>().bounds;
             // Lấy vị trí mép bên trái của Collider
             LeftLimitation = new Vector3(colliderBounds.min.x + leftLimitationOffset, colliderBounds.center.y, colliderBounds.center.z);
-
+            Debug.Log("OnGround");
             isJumping = false;
         }
     }
 
-    void changeAnimationState(String newPlayerState)
+    public void changeAnimationState(String newPlayerState)
     {
         if (currentState.Equals(newPlayerState))
         {
@@ -106,4 +130,27 @@ public class PlayerController : MonoBehaviour
 
         currentState = newPlayerState;
     }
+
+    // Coroutine để xử lý thời gian lăn và sau đó đứng dậy
+    IEnumerator RollCoroutine()
+    {
+        yield return new WaitForSeconds(rollDuration);
+
+        // Khi thời gian lăn kết thúc, thực hiện hành động dậy
+        isRolling = false;
+        gameObject.tag = "Player"; // Gán lại tag để nhân vật có thể va chạm
+        changeAnimationState(weapon + PlayerSate.Run);
+
+        yield return new WaitForSeconds(0.5f); // Khoảng thời gian đứng dậy sau khi lăn (0.5 giây trong ví dụ này)
+
+        // Thực hiện hành động đứng yên sau khi đứng dậy
+        changeAnimationState(weapon + PlayerSate.Idle);
+    }
+    
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
 }
