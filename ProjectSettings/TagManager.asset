@@ -9,6 +9,7 @@ TagManager:
   - Boar
   - Goblin
   - Items_Coin
+  - Arrow
   layers:
   - Default
   - TransparentFX

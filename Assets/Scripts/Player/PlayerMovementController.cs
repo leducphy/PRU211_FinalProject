@@ -17,6 +17,7 @@ public class PlayerMovementController : MonoBehaviour
     String currentState = "";
     public String weapon = "";
     private bool facingRight = true;
+    private float originMoveSpeed;
 
     Vector3 LeftLimitation;
     public enum PlayerSate
@@ -26,6 +27,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
+        originMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         animator = GetComponent<Animator>();
@@ -33,8 +35,7 @@ public class PlayerMovementController : MonoBehaviour
     }
 
     private void Update()
-    {
-
+    {   
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
@@ -85,7 +86,14 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
 
-        Debug.Log("isJumping: " + isJumping);
+        if (weapon.Equals(""))
+        {
+            moveSpeed = 0.3f * originMoveSpeed + originMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = originMoveSpeed;
+        }
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.K))
@@ -107,7 +115,6 @@ public class PlayerMovementController : MonoBehaviour
             Bounds colliderBounds = collision.gameObject.GetComponent<BoxCollider2D>().bounds;
             // Lấy vị trí mép bên trái của Collider
             LeftLimitation = new Vector3(colliderBounds.min.x + leftLimitationOffset, colliderBounds.center.y, colliderBounds.center.z);
-            Debug.Log("OnGround");
             isJumping = false;
         }
     }
