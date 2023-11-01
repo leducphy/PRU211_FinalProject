@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerCombatController : MonoBehaviour
 {
@@ -12,18 +13,18 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] Transform SwordPoint;
     [SerializeField] Transform SpearPoint;
     [SerializeField] int hit = 10;
-   
+
     private Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
     string weapon = "";
     PlayerMovementController playerMovement;
-    //public float attackRate = 2f; //Tốc đánh
-    //float nextAttacktime = 0f;
+    public float attackRate = 2f; //Tốc đánh
+    float nextAttacktime = 0f;
 
     private float spearAttackRange = 1f;
     private float swordAttackRange = 0.6f;
-  
+
     String currentState = "";
     Animator animator;
 
@@ -72,8 +73,8 @@ public class PlayerCombatController : MonoBehaviour
             attackPoint = SwordPoint;
         }
 
-        //if (Time.time >= nextAttacktime)
-        //{
+        if (Time.time >= nextAttacktime)
+        {
 
             if (Input.GetKeyDown(KeyCode.L) && weapon.Equals("Spear"))
             {
@@ -90,48 +91,52 @@ public class PlayerCombatController : MonoBehaviour
                 {
                     randomAttack = UnityEngine.Random.Range(1, 4);
                     animName = weapon + PlayerSate.Attack + randomAttack.ToString();
-                //attackRate = 6f;
-                Attack(animName);
-            }
+                    attackRate = 5f;
+                    Attack(animName);
+                }
                 else if (weapon.Equals("Spear"))
                 {
                     randomAttack = UnityEngine.Random.Range(1, 3);
                     animName = weapon + PlayerSate.Attack + randomAttack.ToString();
-                    //attackRate = 4f;
+                    attackRate = 2f;
                     Attack(animName);
                 }
                 else if (weapon.Equals("Bow"))
                 {
                     animName = weapon + PlayerSate.Attack;
-                    //attackRate = 3f;
+                    attackRate = 1f;
                     Attack(animName);
                 }
                 Debug.Log(animName);
-                //nextAttacktime = Time.time + 1f / attackRate;
-            //}
+                nextAttacktime = Time.time + 1f / attackRate;
+            }
         }
     }
 
     void Attack(string animName)
     {
         // Play an attack animation
-        changeAnimationState(animName);
+        animator.SetTrigger(animName);
         if (weapon.Equals("Bow"))
         {
             Shoot();
         }
-        // Detect enemies in range of attack
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        // Damage enemies
-        foreach (Collider2D item in hitEnemies)
+        else
         {
-            Debug.Log("You hit " + item.name + " by " + weapon);          
-            item.gameObject.GetComponent<EnemyHealth>().getDamage(hit);         
-            GameObject impactInstance = Instantiate(Impact, item.gameObject.transform.position, item.transform.rotation);
-            //Destroy(coinInstance, coinLifetime);
-            StartCoroutine(RemoveAttackImpact(impactInstance));
-        }      
+            // Detect enemies in range of attack
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            // Damage enemies
+            foreach (Collider2D item in hitEnemies)
+            {
+                Debug.Log("You hit " + item.name + " by " + weapon);
+                item.gameObject.GetComponent<EnemyHealth>().getDamage(hit);
+
+                GameObject impactInstance = Instantiate(Impact, item.gameObject.transform.position, item.transform.rotation);
+                //Destroy(coinInstance, coinLifetime);
+                StartCoroutine(RemoveAttackImpact(impactInstance));
+            }
+        }
     }
 
     IEnumerator RemoveAttackImpact(GameObject impactInstance)
