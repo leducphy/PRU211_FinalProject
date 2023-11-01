@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3121572451874022078}
   - component: {fileID: -9017711265018763373}
   - component: {fileID: -2927748831239843244}
+  - component: {fileID: -2170403529629317072}
   m_Layer: 6
   m_Name: Bee
   m_TagString: Bee
@@ -194,3 +195,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0356522, y: 0.86563873}
   m_EdgeRadius: 0
+--- !u!114 &-2170403529629317072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167453570802171142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f168b8be64b684d8983c4101e34685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  coinPrefab: {fileID: 2433456713810035856, guid: e8b2fc075e9758349a0d0f8f05fa4106, type: 3}
