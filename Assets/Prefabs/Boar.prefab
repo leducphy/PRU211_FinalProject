@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8270556645362426914}
   - component: {fileID: 6050936981914087376}
   - component: {fileID: -5815644874428213955}
+  - component: {fileID: -7305425318045996062}
   m_Layer: 6
   m_Name: Boar
   m_TagString: Boar
@@ -194,3 +195,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &-7305425318045996062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255133576444601106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f168b8be64b684d8983c4101e34685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 40
+  coinPrefab: {fileID: 2433456713810035856, guid: e8b2fc075e9758349a0d0f8f05fa4106, type: 3}

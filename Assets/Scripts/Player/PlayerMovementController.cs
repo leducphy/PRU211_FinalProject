@@ -16,9 +16,7 @@ public class PlayerMovementController : MonoBehaviour
     public bool isJumping = false;
     String currentState = "";
     public String weapon = "";
-    private bool isRolling = false;
     private bool facingRight = true;
-    public float rollDuration = 0.16f; // Thời gian lăn (1 giây trong ví dụ này)
 
     Vector3 LeftLimitation;
     public enum PlayerSate
@@ -37,8 +35,6 @@ public class PlayerMovementController : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log("Tag: " + gameObject.tag);
-
         // Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
@@ -51,13 +47,16 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
             weapon = "";
-        }else if (Input.GetKey(KeyCode.Alpha2))
+        }
+        else if (Input.GetKey(KeyCode.Alpha2))
         {
             weapon = "Bow";
-        }else if (Input.GetKey(KeyCode.Alpha3))
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
         {
             weapon = "Spear";
-        }else if (Input.GetKey(KeyCode.Alpha4))
+        }
+        else if (Input.GetKey(KeyCode.Alpha4))
         {
             weapon = "Sword";
         }
@@ -66,21 +65,15 @@ public class PlayerMovementController : MonoBehaviour
         {
             if (moveHorizontal != 0)
             {
-                if (Input.GetKey(KeyCode.LeftShift) && !isRolling)
-                {
-                    isRolling = true;
-                    gameObject.tag = "Untagged"; // Xóa tag để nhân vật không bị va chạm trong thời gian lăn
-                    changeAnimationState(weapon + PlayerSate.Roll);
 
-                    StartCoroutine(RollCoroutine());
-                }
                 changeAnimationState(weapon + PlayerSate.Run);
 
                 //spriteRenderer.flipX = moveHorizontal < 0;
                 if (moveHorizontal > 0 && !facingRight)
                 {
                     Flip();
-                }else if (moveHorizontal < 0 && facingRight)
+                }
+                else if (moveHorizontal < 0 && facingRight)
                 {
                     Flip();
                 }
@@ -101,7 +94,7 @@ public class PlayerMovementController : MonoBehaviour
             {
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 isJumping = true;
-                changeAnimationState(weapon + PlayerSate.Jump.ToString());               
+                changeAnimationState(weapon + PlayerSate.Jump.ToString());
             }
         }
     }
@@ -131,22 +124,7 @@ public class PlayerMovementController : MonoBehaviour
         currentState = newPlayerState;
     }
 
-    // Coroutine để xử lý thời gian lăn và sau đó đứng dậy
-    IEnumerator RollCoroutine()
-    {
-        yield return new WaitForSeconds(rollDuration);
 
-        // Khi thời gian lăn kết thúc, thực hiện hành động dậy
-        isRolling = false;
-        gameObject.tag = "Player"; // Gán lại tag để nhân vật có thể va chạm
-        changeAnimationState(weapon + PlayerSate.Run);
-
-        yield return new WaitForSeconds(0.5f); // Khoảng thời gian đứng dậy sau khi lăn (0.5 giây trong ví dụ này)
-
-        // Thực hiện hành động đứng yên sau khi đứng dậy
-        changeAnimationState(weapon + PlayerSate.Idle);
-    }
-    
     void Flip()
     {
         facingRight = !facingRight;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 507632415020817491}
   - component: {fileID: -3064383326837612326}
   - component: {fileID: -8236331912109349170}
+  - component: {fileID: 4441683174681721628}
   m_Layer: 6
   m_Name: Goblin Rider
   m_TagString: Goblin
@@ -194,3 +195,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &4441683174681721628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814324103813925979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f168b8be64b684d8983c4101e34685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 40
+  coinPrefab: {fileID: 2433456713810035856, guid: e8b2fc075e9758349a0d0f8f05fa4106, type: 3}
