@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1800544ec8a87d344992b9099abaa1b9
+guid: 708f6eca5cac3fe4aba3da2ca0209251
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -65,7 +65,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spear1_0
+      name: Spear_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 218
-        height: 34
+        x: 807
+        y: 974
+        width: 442
+        height: 92
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 7, z: 0, w: 7}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87c1a592e8c312145a1dc1504d346b9f
-      internalID: -566589013
+      spriteID: b076cef35afc68746b52ceabf5adbac8
+      internalID: -261458853
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spear1_0: -566589013
+      Spear_0: -261458853
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

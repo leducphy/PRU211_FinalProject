@@ -84,7 +84,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void Death()
     {
-        animator.Play(gameObject.name + "Die");
+        animator.SetTrigger("Die");
+        gameObject.GetComponent<EnemyMovement>().speed = 0;
         Debug.Log(gameObject.name + "Die");
         StartCoroutine(WaitForAnimationEnd());
     }

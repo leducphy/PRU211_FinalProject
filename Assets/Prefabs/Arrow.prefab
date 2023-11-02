@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  gravity: 0
   Impact: {fileID: 1931774036713002626, guid: 162168591843a754ca76c55ad857471e, type: 3}
   hit: 20
 --- !u!61 &8602793335660738498

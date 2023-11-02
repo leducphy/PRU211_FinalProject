@@ -10,8 +10,10 @@ public class PlayerCombatController : MonoBehaviour
     public GameObject Impact;
     [SerializeField] Transform ArrowPoint;
     [SerializeField] GameObject ArrowPrefab;
+    [SerializeField] GameObject SpearPrefab;
     [SerializeField] Transform SwordPoint;
     [SerializeField] Transform SpearPoint;
+    [SerializeField] Transform ThrowPoint;
     [SerializeField] int hit = 10;
 
     private Transform attackPoint;
@@ -79,8 +81,8 @@ public class PlayerCombatController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L) && weapon.Equals("Spear"))
             {
                 Attack(weapon + PlayerSate.Throw);
-                //attackRate = 1f;
-                //nextAttacktime = Time.time + 1f / attackRate;
+                attackRate = 1f;
+                nextAttacktime = Time.time + 1f / attackRate;
             }
             // Logic Attack Code here
             if (Input.GetKeyDown(KeyCode.J))
@@ -104,7 +106,7 @@ public class PlayerCombatController : MonoBehaviour
                 else if (weapon.Equals("Bow"))
                 {
                     animName = weapon + PlayerSate.Attack;
-                    attackRate = 1f;
+                    attackRate = 1.2f;
                     Attack(animName);
                 }
                 Debug.Log(animName);
@@ -117,7 +119,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         // Play an attack animation
         animator.SetTrigger(animName);
-        if (weapon.Equals("Bow"))
+        if (weapon.Equals("Bow") || animName.Equals("SpearThrow")) 
         {
             Shoot();
         }
@@ -169,7 +171,14 @@ public class PlayerCombatController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(ArrowPrefab, ArrowPoint.position, ArrowPoint.rotation);
+        if (weapon.Equals("Bow"))
+        {
+            Instantiate(ArrowPrefab, ArrowPoint.position, ArrowPoint.rotation);
+        }else if (weapon.Equals("Spear"))
+        {
+            Instantiate(SpearPrefab, ThrowPoint.position, ThrowPoint.rotation);
+        }
+       
     }
 
 
