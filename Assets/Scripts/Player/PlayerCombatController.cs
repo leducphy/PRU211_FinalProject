@@ -157,18 +157,6 @@ public class PlayerCombatController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    public void changeAnimationState(String newPlayerState)
-    {
-        if (currentState.Equals(newPlayerState))
-        {
-            return;
-        }
-
-        animator.Play(newPlayerState);
-
-        currentState = newPlayerState;
-    }
-
     void Shoot()
     {
         if (weapon.Equals("Bow"))
@@ -181,15 +169,9 @@ public class PlayerCombatController : MonoBehaviour
        
     }
 
-
-    void onCompleteAttack()
+    public void onCompleteAttack()
     {
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            changeAnimationState(weapon + "Run");
-        }
-        else
-            changeAnimationState(weapon + "Idle");
+
     }
 
 }
