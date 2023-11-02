@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: d106d45e34516e045bb8c5ed0fd22916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,3 +209,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 40
   coinPrefab: {fileID: 2433456713810035856, guid: e8b2fc075e9758349a0d0f8f05fa4106, type: 3}
+  pushForce: 5
+  pushDuration: 0.2

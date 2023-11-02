@@ -29,11 +29,6 @@ public class RandomRelocate : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-        Relocate();
-    }
-
     public void Relocate()
     {
         Vector3 pos;
