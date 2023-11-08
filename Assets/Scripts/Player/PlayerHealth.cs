@@ -71,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger(playerMovement.weapon + "Die");
         Debug.Log(playerMovement.weapon + "Die");
         StartCoroutine(WaitForAnimationEnd());
+        //
 
     }
     private IEnumerator ResetSpriteColor()
