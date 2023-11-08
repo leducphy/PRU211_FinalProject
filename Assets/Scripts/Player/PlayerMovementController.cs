@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [SerializeField] private AudioClip jumpSound;
+
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -104,6 +106,7 @@ public class PlayerMovementController : MonoBehaviour
                 rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 isJumping = true;
                 changeAnimationState(weapon + PlayerSate.Jump.ToString());
+                SoundManagement.instance.PlaySound(jumpSound);
             }
         }
     }

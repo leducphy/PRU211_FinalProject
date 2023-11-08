@@ -16,6 +16,9 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] Transform ThrowPoint;
     [SerializeField] int hit = 10;
 
+    [SerializeField] private AudioClip attackSound;
+  
+
     private Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
@@ -122,6 +125,9 @@ public class PlayerCombatController : MonoBehaviour
         if (weapon.Equals("Bow") || animName.Equals("SpearThrow")) 
         {
             Shoot();
+            SoundManagement.instance.PlaySound(attackSound);
+           
+
         }
         else
         {
@@ -137,7 +143,9 @@ public class PlayerCombatController : MonoBehaviour
                 GameObject impactInstance = Instantiate(Impact, item.gameObject.transform.position, item.transform.rotation);
                 //Destroy(coinInstance, coinLifetime);
                 StartCoroutine(RemoveAttackImpact(impactInstance));
+                SoundManagement.instance.PlaySound(attackSound);
             }
+           
         }
     }
 
