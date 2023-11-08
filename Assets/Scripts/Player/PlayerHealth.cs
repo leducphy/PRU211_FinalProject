@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] private AudioClip impactSound;
+
     [SerializeField] float Health;
     [SerializeField] Image HealthBar;
     [SerializeField] Text txtHealth;
@@ -51,6 +53,9 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
         StartCoroutine(ResetSpriteColor());
+        SoundManagement.instance.PlaySound(impactSound);
+
+
     }
 
 
