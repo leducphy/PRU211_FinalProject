@@ -8,7 +8,7 @@ public class ItemsCollectionController : MonoBehaviour
     public GameObject CoinCollectionEffectPrefab;
     public static int CoinCollected = 0;
     [SerializeField] private int CoinEnemyValue = 10;
-    [SerializeField] Text txtCoin;
+    [SerializeField] public  Text txtCoin;
     // add sound in here
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,5 +28,10 @@ public class ItemsCollectionController : MonoBehaviour
         yield return new WaitForSeconds(CoinCollectionEffect.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);  
         Destroy(CoinCollectionEffect);
         Destroy(Coin);
+    }
+
+    public void Start()
+    {
+        txtCoin.text = CoinCollected + "";
     }
 }
