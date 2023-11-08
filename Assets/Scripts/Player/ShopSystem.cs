@@ -7,7 +7,8 @@ public class ShopSystem : MonoBehaviour
     [SerializeField]
     private GameObject screen;
     [SerializeField] private int hpCoin = 10;
-
+    [SerializeField] private AudioClip buySound;
+    [SerializeField] private AudioClip errorSound;
 
     private void Awake()
     {
@@ -21,8 +22,13 @@ public class ShopSystem : MonoBehaviour
           if (ItemsCollectionController.CoinCollected > 0)
             {
                 ItemsCollectionController.CoinCollected -= hpCoin;
-               GetComponent<ItemsCollectionController>().txtCoin.text = ItemsCollectionController.CoinCollected + "";
+                SoundManagement.instance.PlaySound(buySound);
+                GetComponent<ItemsCollectionController>().txtCoin.text = ItemsCollectionController.CoinCollected + "";
                 // + hp
+            }
+            else
+            {
+                SoundManagement.instance.PlaySound(errorSound);
             }
             
         }
