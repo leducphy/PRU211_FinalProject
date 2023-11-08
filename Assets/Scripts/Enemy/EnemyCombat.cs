@@ -18,6 +18,7 @@ public class EnemyCombat : MonoBehaviour
     float originSpeed;
     float distance;
 
+
     void Start()
     {
         Player = GameObject.Find("Player");

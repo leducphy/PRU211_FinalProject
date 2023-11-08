@@ -10,6 +10,7 @@ TagManager:
   - Goblin
   - Items_Coin
   - Arrow
+  - ShopBuyer
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemy
   - Ground
   - Player
-  - 
+  - Menu
   - 
   - 
   - 
