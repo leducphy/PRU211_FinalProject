@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int health;
+    [SerializeField] public int health;
     [SerializeField] GameObject coinPrefab;
     private Transform Player;
     private Animator animator;
@@ -77,13 +77,13 @@ public class EnemyHealth : MonoBehaviour
         Hit();
         Debug.Log("Health: " + health);
         if (health <= 0)
-        {
+        {           
             Death();
         }
     }
 
     public void Death()
-    {
+    { 
         animator.SetTrigger("Die");
         gameObject.GetComponent<EnemyMovement>().speed = 0;
         Debug.Log(gameObject.name + "Die");

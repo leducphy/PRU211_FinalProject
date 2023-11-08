@@ -20,7 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     public String weapon = "";
     private bool facingRight = true;
     private float originMoveSpeed;
-    private float moveHorizontal;
+    public float moveHorizontal;
 
     Vector3 LeftLimitation;
     public enum PlayerSate

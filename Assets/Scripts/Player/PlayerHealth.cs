@@ -39,10 +39,7 @@ public class PlayerHealth : MonoBehaviour
         }
         txtHealth.text = CurrentHealth + " / " + Health;
         HealthBar.fillAmount = CurrentHealth / Health;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            getDamage(10);
-        }
+       
     }
 
     public void getDamage(float hit)
@@ -57,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Death();
         }
+
         StartCoroutine(ResetSpriteColor());
         SoundManagement.instance.PlaySound(impactSound);
 
@@ -79,6 +77,14 @@ public class PlayerHealth : MonoBehaviour
         // Đợi cho đến khi animation hoàn thành
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
+        if (GetComponent<PlayerMovementController>().moveHorizontal != 0)
+        {
+            animator.SetTrigger("Run");
+        }
+        else
+        {
+            animator.SetTrigger("Idle");
+        }
     }
 
     private IEnumerator WaitForAnimationEnd()

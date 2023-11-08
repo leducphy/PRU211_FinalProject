@@ -125,9 +125,7 @@ public class PlayerCombatController : MonoBehaviour
         if (weapon.Equals("Bow") || animName.Equals("SpearThrow")) 
         {
             Shoot();
-            SoundManagement.instance.PlaySound(attackSound);
-           
-
+            SoundManagement.instance.PlaySound(attackSound);         
         }
         else
         {
@@ -146,6 +144,14 @@ public class PlayerCombatController : MonoBehaviour
                 SoundManagement.instance.PlaySound(attackSound);
             }
            
+        }
+        if (GetComponent<PlayerMovementController>().moveHorizontal != 0)
+        {
+            animator.SetTrigger("Run");
+        }
+        else
+        {
+            animator.SetTrigger("Idle");
         }
     }
 

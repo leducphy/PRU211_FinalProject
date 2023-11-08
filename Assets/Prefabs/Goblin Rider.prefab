@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: -8236331912109349170}
   - component: {fileID: 4441683174681721628}
   - component: {fileID: 953505868054244987}
-  - component: {fileID: 8179856260905708063}
   m_Layer: 6
   m_Name: Goblin Rider
   m_TagString: Goblin
@@ -217,7 +216,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21230698, y: -0.6556295}
+  m_Offset: {x: -0.28015137, y: -0.72347295}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -228,7 +227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.726448, y: 1.2487409}
+  m_Size: {x: 1.5167542, y: 1.113054}
   m_EdgeRadius: 0
 --- !u!114 &4441683174681721628
 MonoBehaviour:
@@ -264,29 +263,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hit: 1
-  AttackRadius: 1.4
-  attackCooldown: 1
-  isLongRangeAttack: 0
-  BulletPrefab: {fileID: 0}
---- !u!114 &8179856260905708063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814324103813925979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89c79e9e1e3b1247801e4e064892897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 4392905120992732349}
-  AttackRange: 0.88
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  hit: 1
-  AttackRadius: 1.4
+  AttackRadius: 1.5
   attackCooldown: 1
   isLongRangeAttack: 0
   BulletPrefab: {fileID: 0}
