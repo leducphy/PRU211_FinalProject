@@ -22596,7 +22596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.87, y: 68.955}
+  m_AnchoredPosition: {x: -0.7, y: 69}
   m_SizeDelta: {x: 52.37, y: 38.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1564740893
@@ -22632,7 +22632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: potions
+  m_Text: 'Press ''B'' '
 --- !u!222 &1564740894
 CanvasRenderer:
   m_ObjectHideFlags: 0
