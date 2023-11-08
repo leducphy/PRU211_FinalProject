@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 7807670206968176780}
   - component: {fileID: -4998219151866772412}
   - component: {fileID: 1266458852964899061}
-  - component: {fileID: 3942961276002370589}
   m_Layer: 6
   m_Name: Goblin Axe
   m_TagString: Goblin
@@ -186,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16428757, y: -0.010267973}
+  m_Offset: {x: -0.19657898, y: -0.12005758}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1696396, y: 1.6044612}
+  m_Size: {x: 0.6917267, y: 1.384882}
   m_EdgeRadius: 0
 --- !u!114 &-4998219151866772412
 MonoBehaviour:
@@ -233,29 +232,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hit: 1
-  AttackRadius: 1.5
-  attackCooldown: 1
-  isLongRangeAttack: 0
-  BulletPrefab: {fileID: 0}
---- !u!114 &3942961276002370589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371199853320766423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89c79e9e1e3b1247801e4e064892897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 4537219886284444765}
-  AttackRange: 1.02
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  hit: 1
-  AttackRadius: 1.5
+  AttackRadius: 1.7
   attackCooldown: 1
   isLongRangeAttack: 0
   BulletPrefab: {fileID: 0}

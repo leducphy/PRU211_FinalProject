@@ -6,8 +6,8 @@ public class EnemyCombat : MonoBehaviour
 {
     [SerializeField] Transform AttackPoint;
     [SerializeField] float AttackRange;
-    [SerializeField] LayerMask PlayerLayer;
-    [SerializeField] float hit;
+    [SerializeField] public LayerMask PlayerLayer;
+    [SerializeField] public float hit;
     [SerializeField] float AttackRadius;
     [SerializeField] float attackCooldown = 1.0f; // Độ trễ giữa các lần tấn công
     [SerializeField] bool isLongRangeAttack = false;
@@ -29,9 +29,14 @@ public class EnemyCombat : MonoBehaviour
 
     void Update()
     {
+        if (GetComponent<EnemyHealth>().health <= 0)
+        {
+            PlayerLayer.value = 0;
+        }
         distance = Vector2.Distance(transform.position, Player.transform.position);
         if (distance <= AttackRadius && Time.time - lastAttackTime >= attackCooldown)
         {
+            GetComponent<EnemyMovement>().speed = 0;
             Attack();
         }
         else if (distance > AttackRadius)
@@ -67,8 +72,6 @@ public class EnemyCombat : MonoBehaviour
                 }
             }
         }
-
-        
 
         // Cập nhật thời điểm tấn công trước đó
         lastAttackTime = Time.time;

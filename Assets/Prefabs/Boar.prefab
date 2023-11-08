@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: -5815644874428213955}
   - component: {fileID: -7305425318045996062}
   - component: {fileID: 6365488052661954042}
-  - component: {fileID: 1143612047135835955}
   m_Layer: 6
   m_Name: Boar
   m_TagString: Boar
@@ -248,7 +247,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025642395, y: -0.16239691}
+  m_Offset: {x: -0.15608597, y: -0.16239691}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -259,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4700775, y: 0.98939514}
+  m_Size: {x: 1.2091904, y: 0.98939514}
   m_EdgeRadius: 0
 --- !u!114 &-7305425318045996062
 MonoBehaviour:
@@ -290,28 +289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPoint: {fileID: 1953447246094051335}
-  AttackRange: 0.51
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  hit: 1
-  AttackRadius: 1.3
-  attackCooldown: 1
-  isLongRangeAttack: 0
-  BulletPrefab: {fileID: 0}
---- !u!114 &1143612047135835955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7255133576444601106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89c79e9e1e3b1247801e4e064892897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 4810470096499795044}
   AttackRange: 0.51
   PlayerLayer:
     serializedVersion: 2

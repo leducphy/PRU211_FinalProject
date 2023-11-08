@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1527221254819668581}
   - component: {fileID: 2535435161873415597}
   - component: {fileID: 6327834354066755208}
-  - component: {fileID: 6059339939307353203}
   m_Layer: 6
   m_Name: Goblin Halberd
   m_TagString: Goblin
@@ -186,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.18198013, y: -0.02454567}
+  m_Offset: {x: -0.1881485, y: -0.067718744}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0225143, y: 1.5578499}
+  m_Size: {x: 0.788147, y: 1.4715037}
   m_EdgeRadius: 0
 --- !u!114 &2535435161873415597
 MonoBehaviour:
@@ -228,28 +227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPoint: {fileID: 2845338831219764030}
-  AttackRange: 1.03
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  hit: 1
-  AttackRadius: 1.8
-  attackCooldown: 1
-  isLongRangeAttack: 0
-  BulletPrefab: {fileID: 0}
---- !u!114 &6059339939307353203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747065207020857555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89c79e9e1e3b1247801e4e064892897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 9063905174594446749}
   AttackRange: 1.03
   PlayerLayer:
     serializedVersion: 2

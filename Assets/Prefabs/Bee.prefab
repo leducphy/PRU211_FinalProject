@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -2927748831239843244}
   - component: {fileID: -2170403529629317072}
   - component: {fileID: 8267961015967150399}
-  - component: {fileID: 887941923717555111}
   m_Layer: 6
   m_Name: Bee
   m_TagString: Bee
@@ -186,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005973816, y: 0.032730818}
+  m_Offset: {x: 0.019046783, y: 0.09528804}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8476105, y: 0.7801666}
+  m_Size: {x: 0.6724472, y: 0.6550522}
   m_EdgeRadius: 0
 --- !u!114 &-2170403529629317072
 MonoBehaviour:
@@ -233,29 +232,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   hit: 1
-  AttackRadius: 1
-  attackCooldown: 1
-  isLongRangeAttack: 0
-  BulletPrefab: {fileID: 0}
---- !u!114 &887941923717555111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6167453570802171142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89c79e9e1e3b1247801e4e064892897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackPoint: {fileID: 2065949592380203932}
-  AttackRange: 0.65
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  hit: 1
-  AttackRadius: 1
+  AttackRadius: 1.2
   attackCooldown: 1
   isLongRangeAttack: 0
   BulletPrefab: {fileID: 0}
