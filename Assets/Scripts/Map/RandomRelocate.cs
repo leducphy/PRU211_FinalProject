@@ -36,7 +36,7 @@ public class RandomRelocate : MonoBehaviour
         foreach (Transform item in EnvironmentItems)
         {
             pos = item.position;
-            rand = Random.Range(-20, 20);
+            rand = Random.Range(-5, 5);
             pos.x += rand;
             item.position = pos;
         }

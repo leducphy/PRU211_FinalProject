@@ -18,6 +18,7 @@ public class PlayerMovementController : MonoBehaviour
     public String weapon = "";
     private bool facingRight = true;
     private float originMoveSpeed;
+    private float moveHorizontal;
 
     Vector3 LeftLimitation;
     public enum PlayerSate
@@ -37,7 +38,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Update()
     {   
         // Movement
-        float moveHorizontal = Input.GetAxis("Horizontal");
+         moveHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
 
         if (transform.position.x < LeftLimitation.x)
