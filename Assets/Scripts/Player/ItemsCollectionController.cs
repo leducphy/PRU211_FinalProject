@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ItemsCollectionController : MonoBehaviour
 {
     public GameObject CoinCollectionEffectPrefab;
+    public static int CoinCollected = 0;
+    [SerializeField] private int CoinEnemyValue = 10;
+    [SerializeField] Text txtCoin;
     // add sound in here
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +16,9 @@ public class ItemsCollectionController : MonoBehaviour
         {
             GameObject CoinCollectionEffect = Instantiate(CoinCollectionEffectPrefab, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
             StartCoroutine(WaitForAnimationEnd(CoinCollectionEffect, collision.gameObject));
+            CoinCollected += CoinEnemyValue;
+            txtCoin.text =  CoinCollected+"";
+
         }
     }
 

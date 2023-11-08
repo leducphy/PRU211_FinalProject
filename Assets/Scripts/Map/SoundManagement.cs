@@ -10,7 +10,21 @@ public class SoundManagement : MonoBehaviour
     [SerializeField] Image OffIcon;
     [SerializeField] Image OnIcon;
     private bool muted = false;
-    // Start is called before the first frame update
+
+    private AudioSource source;
+    public static SoundManagement instance { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+        source = GetComponent<AudioSource>();   
+    }
+    public void PlaySound(AudioClip _sound)
+    {
+        source.PlayOneShot(_sound);
+    }
+
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
