@@ -94,6 +94,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // Đợi cho đến khi animation hoàn thành
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        //animator.SetTrigger("Die");
         GameObject coinInstance = Instantiate(coinPrefab, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

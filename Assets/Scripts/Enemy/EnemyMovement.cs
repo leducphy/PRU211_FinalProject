@@ -7,8 +7,11 @@ public class EnemyMovement : MonoBehaviour
     GameObject targetObject;
     [SerializeField] public float speed;
 
+    Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         targetObject = GameObject.Find("Player");
     }
 
@@ -16,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         Vector2 direction = targetObject.transform.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * speed * Time.deltaTime);       
         FlipSprite(direction.x < 0);
     }
 
