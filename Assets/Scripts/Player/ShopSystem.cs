@@ -7,6 +7,7 @@ public class ShopSystem : MonoBehaviour
     [SerializeField]
     private GameObject screen;
     [SerializeField] private int hpCoin = 10;
+    [SerializeField] private int hpBuy = 5;
     [SerializeField] private AudioClip buySound;
     [SerializeField] private AudioClip errorSound;
 
@@ -19,11 +20,12 @@ public class ShopSystem : MonoBehaviour
     {
         if (screen != null && screen.activeSelf && Input.GetKeyDown(KeyCode.B))
         {
-          if (ItemsCollectionController.CoinCollected > 0)
+          if (ItemsCollectionController.CoinCollected > 0 && GetComponent<PlayerHealth>().CurrentHealth < GetComponent<PlayerHealth>().Health)
             {
                 ItemsCollectionController.CoinCollected -= hpCoin;
                 SoundManagement.instance.PlaySound(buySound);
                 GetComponent<ItemsCollectionController>().txtCoin.text = ItemsCollectionController.CoinCollected + "";
+                GetComponent<PlayerHealth>().CurrentHealth += hpBuy;
                 // + hp
             }
             else
