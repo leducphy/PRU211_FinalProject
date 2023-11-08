@@ -7,12 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private AudioClip impactSound;
 
-    [SerializeField] float Health;
+    [SerializeField] public float Health;
     [SerializeField] Image HealthBar;
     [SerializeField] Text txtHealth;
     [SerializeField] float impactForce = 1.3f;
 
-    private float CurrentHealth;
+    public float CurrentHealth;
     private PlayerMovementController playerMovement;
     private Animator animator;
     private Rigidbody2D rb;
@@ -33,7 +33,12 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         //spriteRenderer.color = Color.white;
+        if(CurrentHealth > Health)
+        {
+            CurrentHealth = Health;
+        }
         txtHealth.text = CurrentHealth + " / " + Health;
+        HealthBar.fillAmount = CurrentHealth / Health;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             getDamage(10);
@@ -43,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
     public void getDamage(float hit)
     {
         CurrentHealth -= hit;
-        HealthBar.fillAmount = CurrentHealth / Health;
+        //HealthBar.fillAmount = CurrentHealth / Health;
         rb.AddForce(new Vector2(0f, impactForce), ForceMode2D.Impulse);
         animator.SetTrigger("Is"+playerMovement.weapon+"Hit");
         spriteRenderer.color = new Color(1.0f, 0.71f, 0.71f); // Using RGB values for "FFB6B6"

@@ -32160,6 +32160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e0b136c76984245bd1e12d1ca6d5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: 3cc20431f37fd294babc4be7c6c822d4, type: 3}
   moveSpeed: 5
   jumpForce: 10
   leftLimitationOffset: 5
@@ -32258,6 +32259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 1402956839}
   hpCoin: 10
+  buySound: {fileID: 8300000, guid: 2fa0dbdf8dd5c0c47b8410425a3466e6, type: 3}
+  errorSound: {fileID: 8300000, guid: 38c8e39453f044a4c95001ce1e3241e8, type: 3}
 --- !u!1 &2038076006
 GameObject:
   m_ObjectHideFlags: 0
