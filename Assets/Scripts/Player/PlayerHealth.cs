@@ -71,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger(playerMovement.weapon + "Die");
         Debug.Log(playerMovement.weapon + "Die");
         StartCoroutine(WaitForAnimationEnd());
+        //
 
     }
     private IEnumerator ResetSpriteColor()
@@ -84,6 +85,6 @@ public class PlayerHealth : MonoBehaviour
     {
         // Đợi cho đến khi animation hoàn thành
         yield return new WaitForSeconds(1f);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 }
