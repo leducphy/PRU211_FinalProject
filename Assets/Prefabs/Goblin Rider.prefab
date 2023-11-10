@@ -262,7 +262,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 256
-  hit: 1
+  hit: 5
   AttackRadius: 1.5
   attackCooldown: 1
   isLongRangeAttack: 0

@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyGeneration : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] GameObject[] spawnPoints;
+
+    int day;
     private Dictionary<string, float> enemySpawnTimes; // Dictionary ánh xạ tag name và thời gian sinh
 
     private void Start()
@@ -46,12 +50,13 @@ public class EnemyGeneration : MonoBehaviour
 
     private void SpawnEnemy(string enemyTagName)
     {
+        
         // Tạo một danh sách các enemy prefab có cùng tag name
         List<GameObject> enemyPrefabsWithTag = new List<GameObject>();
 
         // Lặp qua tất cả enemy prefabs và lọc các prefab có tag name khớp
         foreach (GameObject prefab in enemyPrefabs)
-        {
+        {          
             if (prefab.tag == enemyTagName)
             {
                 enemyPrefabsWithTag.Add(prefab);

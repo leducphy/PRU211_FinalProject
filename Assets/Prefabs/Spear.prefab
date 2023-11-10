@@ -174,4 +174,4 @@ MonoBehaviour:
   speed: 14
   gravity: 9.8
   Impact: {fileID: 1931774036713002626, guid: 162168591843a754ca76c55ad857471e, type: 3}
-  hit: 1
+  hit: 40

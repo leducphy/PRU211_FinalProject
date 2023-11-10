@@ -8,7 +8,7 @@ using UnityEngine;
 public class WorldTimeDisplay : MonoBehaviour
 {
     private TMP_Text _text;
-    private int _dayCount;
+    public int _dayCount;
     private float _timer;
     private float _interval = 30f;
     private void Awake()

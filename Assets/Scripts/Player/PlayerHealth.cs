@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image HealthBar;
     [SerializeField] Text txtHealth;
     [SerializeField] float impactForce = 1.3f;
+    public GameObject GameOverUI;
 
     public float CurrentHealth;
     private PlayerMovementController playerMovement;
@@ -69,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger(playerMovement.weapon + "Die");
         Debug.Log(playerMovement.weapon + "Die");
         StartCoroutine(WaitForAnimationEnd());
-        //
+        GameOverUI.SetActive(true);
 
     }
     private IEnumerator ResetSpriteColor()
